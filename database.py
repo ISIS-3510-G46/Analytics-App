@@ -24,5 +24,16 @@ def fetch_posts():
         raise Exception
     
 
+def fetch_favorites():
+    """Fetch all favorites from favorites tables"""
+    supabase = init_supabase()
+    favorites = supabase.table("favorites").select("*").execute()
+    events = supabase.table("favorite_events").select("*").execute()
+    
+    if favorites.data:
+        return favorites.data, events.data
+    else:
+        raise Exception
+    
 
 

@@ -9,4 +9,11 @@ def analyze_posts(posts):
     return df
 
 
+def analyze_favorites(favorites, events):
+    df = pd.DataFrame(favorites)
+    df_events = pd.DataFrame(events)
+    df_events['latitude'] = df_events['latitude'].round(4)
+    df_events['longitude'] = df_events['longitude'].round(4)
+    print(df_events)
+    return df, df_events
 
